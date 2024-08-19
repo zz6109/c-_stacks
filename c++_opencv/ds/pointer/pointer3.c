@@ -8,9 +8,13 @@ int main(void)
     // p = &a;
 
     char *p;
-    p = (char *)&a; // 리틀엔디언 시스템
+    p = (char *)&a; // 기본적으로 리틀엔디언 시스템임, 빅엔디언으로 바꿔 줄려면 a를 역으로 배열시키는 함수를 만들어야함.(하지마)
 
-    printf("*p: %x\n", *p);
+    short *p_s;
+    p_s = (short *)&a;
+
+    printf("char *p: %x\n", *p);
+    printf("short *p: %x\n", *p_s);
 
     return 0;
 }
