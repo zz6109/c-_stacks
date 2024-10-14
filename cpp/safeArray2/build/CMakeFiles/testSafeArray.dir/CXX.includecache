@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kimjaehwan/study/cpp/safeArray2/array.cpp
+cassert
+-
+array.h
+/home/kimjaehwan/study/cpp/safeArray2/array.h
+
+/home/kimjaehwan/study/cpp/safeArray2/array.h
+iostream
+-
+
+/home/kimjaehwan/study/cpp/safeArray2/main.cpp
+safearray.h
+/home/kimjaehwan/study/cpp/safeArray2/safearray.h
+iostream
+-
+
+/home/kimjaehwan/study/cpp/safeArray2/safeArray.cpp
+safearray.h
+/home/kimjaehwan/study/cpp/safeArray2/safearray.h
+cassert
+-
+
+/home/kimjaehwan/study/cpp/safeArray2/safearray.h
+array.h
+/home/kimjaehwan/study/cpp/safeArray2/array.h
+

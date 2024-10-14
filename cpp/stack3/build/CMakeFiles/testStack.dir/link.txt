@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/testStack.dir/array.cpp.o CMakeFiles/testStack.dir/main.cpp.o CMakeFiles/testStack.dir/stack.cpp.o -o testStack 

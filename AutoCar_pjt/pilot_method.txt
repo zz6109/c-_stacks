@@ -1,0 +1,20 @@
+Pilot 메서드
+Car = Pilot.AutoCar() # Car 객체 생성
+Car.setSpeed(50) # 속도 설정 (0 ~ 99)
+Car.steering       # 조향 -1 ~ 1
+Car.forward() # 전진
+Car.backward() # 후진
+Car.camPan(n) # 카메라 좌우 (0 ~ 180)
+Car.camTilt(n) # 카메라 상하 (-30 ~ 90)
+Car.joystick() # 조이스틱
+Car.getGyro(axis) # 자이로
+Car.getAccel(axis) # 가속도
+=====================================================================
+LiDAR 기본
+connect()      # LiDAR 연결
+startMotor()   # LiDAR 스캐닝 모터 시작
+stopMotor()   # LiDAR 스캐닝 모터 정지
+getVectors()   # 1회전 스캔 벡터 (튜플)
+getXY()      # 1회전 스캔 좌표값 리턴
+getMap(size, limit_distance)   # 1회전 스캔값을 2차원 맵으로 반환
+      # size: 맵 사이즈(기본값 300, 300), limit_distance: 맵표현 최대거리(기본값 12000)

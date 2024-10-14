@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kimjaehwan/study/cpp/rational_class/main.cpp
+rational.h
+/home/kimjaehwan/study/cpp/rational_class/rational.h
+iostream
+-
+
+/home/kimjaehwan/study/cpp/rational_class/rational.cpp
+rational.h
+/home/kimjaehwan/study/cpp/rational_class/rational.h
+iostream
+-
+
+/home/kimjaehwan/study/cpp/rational_class/rational.h
+iostream
+-
+

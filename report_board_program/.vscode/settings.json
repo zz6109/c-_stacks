@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "student_info_input.h": "c",
+        "dirent.h": "c"
+    }
+}

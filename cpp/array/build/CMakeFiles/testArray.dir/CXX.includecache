@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kimjaehwan/study/cpp/array/array.h
+
+/home/kimjaehwan/study/cpp/array/main.cpp
+array.h
+/home/kimjaehwan/study/cpp/array/array.h
+

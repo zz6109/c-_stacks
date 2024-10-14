@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kimjaehwan/study/cpp/boundaryArray/array.h
+cassert
+-
+
+/home/kimjaehwan/study/cpp/boundaryArray/boundaryArray.h
+safeArray.h
+/home/kimjaehwan/study/cpp/boundaryArray/safeArray.h
+
+/home/kimjaehwan/study/cpp/boundaryArray/complex.h
+iostream
+-
+
+/home/kimjaehwan/study/cpp/boundaryArray/main.cpp
+iostream
+-
+boundaryArray.h
+/home/kimjaehwan/study/cpp/boundaryArray/boundaryArray.h
+complex.h
+/home/kimjaehwan/study/cpp/boundaryArray/complex.h
+
+/home/kimjaehwan/study/cpp/boundaryArray/safeArray.h
+array.h
+/home/kimjaehwan/study/cpp/boundaryArray/array.h
+cassert
+-
+

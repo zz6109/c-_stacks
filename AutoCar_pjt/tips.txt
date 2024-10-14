@@ -1,0 +1,4 @@
+conda activate orange3
+orange-canvas
+
+MSE, RMSE, MAE 가 0에 가까울 수록 정확도가 높은 모델이다.

@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kimjaehwan/study/cpp/gcd/gcd.c
+gcd.h
+/home/kimjaehwan/study/cpp/gcd/gcd.h
+
+/home/kimjaehwan/study/cpp/gcd/gcd.h
+
+/home/kimjaehwan/study/cpp/gcd/main.c
+gcd.h
+/home/kimjaehwan/study/cpp/gcd/gcd.h
+stdio.h
+-
+

@@ -1,0 +1,1 @@
+/usr/bin/g++ CMakeFiles/testList.dir/list.cpp.o CMakeFiles/testList.dir/main.cpp.o -o testList 

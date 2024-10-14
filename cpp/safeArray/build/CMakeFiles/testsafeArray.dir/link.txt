@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/testsafeArray.dir/safeArray.cpp.o CMakeFiles/testsafeArray.dir/main.cpp.o -o testsafeArray 

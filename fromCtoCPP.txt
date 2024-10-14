@@ -1,0 +1,40 @@
+from C to C++
+
+1. .c --> .cpp
+2. OOP?   push(&s1, 100);  ---> s1.push(100)
+   > 전역함수 --> 멤버함수
+   * 멤버함수는 반드시 객체(구조체 변수)를 통해서 호출한다.
+     s1.push(100); s2.push(900);
+   * 멤버함수는 자신을 호출한 객체를 가리키는 this라는 포인터를 가진다.
+   > ps-> ---> this-> 
+3. malloc() / free() --> new / delete 연산자
+    new 자료형[인자]; / delet [] 구조체.객체;
+    new 노드();
+4. 생성자(constructor) : 객체가 생성될때 자동적으로 호출되는 멤버함수 
+   소멸자(destructor) : 객체가 소멸될때 자동적으로 호출되는 멤버함수
+`  > void Stack::initStack(int size) ---> Stack::Stack(int size)
+   > void Stack::cleanupStack() ---> Stack::~Stack()   
+
+5. 접근지정자 (private, public)
+   > 내부 구현(implemetation)은 숨기고 인터페이스(interface)는 보인다.
+   > 허용된 연산을 통해서만 내부 구현에 접근한다.
+   > 기본적으로 private으로 설정됨
+
+6. struct --> class
+   > class(C++) = C's struct + member func.(멤버 함수) + private/public(접근지정자)
+
+7. <stdio.h>  ---> namespace가 적용된 <cstdio>
+
+8. printf() --> cout << OOO;
+
+* int main(void) --> int main()
+* typedef struct {} Stack; --> struct Stack {};
+
+-----------------------------------
+
+Bjarne Stroustrup
+
+객체지향 프로그래밍 Pardigm
+(Objective Oriented Programming ; OOP)
+
+C + OOP 개념 : 'C with classes' 'better C' C++
