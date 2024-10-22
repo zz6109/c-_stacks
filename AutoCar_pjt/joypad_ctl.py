@@ -1,49 +1,54 @@
 import pygame
+import sys
 
-# Pygame 및 조이패드 초기화
+# Pygame 초기화
 pygame.init()
+
+# 조이스틱 초기화
 pygame.joystick.init()
 
-# 조이패드가 연결되어 있는지 확인
-if pygame.joystick.get_count() > 0:
-    joystick = pygame.joystick.Joystick(0)
-    joystick.init()
-    print(f"조이패드 이름: {joystick.get_name()}")
-    print(f"버튼 개수: {joystick.get_numbuttons()}")
-    print(f"축 개수: {joystick.get_numaxes()}")
-    print(f"HAT 개수: {joystick.get_numhats()}")
+# 연결된 조이스틱 개수 확인
+joystick_count = pygame.joystick.get_count()
+if joystick_count == 0:
+    print("연결된 조이스틱이 없습니다.")
+    sys.exit()
 
-# 입력을 처리하는 루프
-running = True
-while running:
-    # for event in pygame.event.get():
-    #     if event.type == pygame.QUIT:
-    #         running = False
+# 첫 번째 조이스틱 연결 (조이스틱이 여러 개일 경우 확장 가능)
+joystick = pygame.joystick.Joystick(0)
+joystick.init()
 
-    #     # 버튼이 눌렸을 때
-    #     if event.type == pygame.JOYBUTTONDOWN:
-    #         print(f"버튼 {event.button}이 눌렸습니다.")
-        
-    #     # 버튼이 떼졌을 때
-    #     if event.type == pygame.JOYBUTTONUP:
-    #         print(f"버튼 {event.button}이 떼어졌습니다.")
+# 각종 정보 출력
+print(f"조이스틱 이름: {joystick.get_name()}")
+print(f"조이스틱 축 개수: {joystick.get_numaxes()}")
+print(f"조이스틱 버튼 개수: {joystick.get_numbuttons()}")
+print(f"조이스틱 HAT 개수: {joystick.get_numhats()}")
 
-    # 모든 버튼의 값을 실시간으로 출력
-    # for i in range(joystick.get_numbuttons()):
-    #     if joystick.get_button(i) != 0.0:
-    #         button_value = joystick.get_button(i)
-    #         print(f"버튼 {i} 값: {button_value}")
+# 이벤트 루프
+try:
+    while True:
+        for event in pygame.event.get():
+            # 조이스틱 축 이벤트 처리
+            if event.type == pygame.JOYAXISMOTION:
+                axis = event.axis
+                value = event.value
+                print(f"축 {axis} 입력값: {value}")
 
-    # 모든 축의 값을 실시간으로 출력
-    for i in range(joystick.get_numaxes()):
-        # if joystick.get_numaxes() == 5:
-        # if joystick.get_axis() != -1.0:
-        print(f"축 5값: {joystick.get_axis(i)}")
+            # 조이스틱 버튼 이벤트 처리
+            elif event.type == pygame.JOYBUTTONDOWN or event.type == pygame.JOYBUTTONUP:
+                button = event.button
+                state = "눌림" if event.type == pygame.JOYBUTTONDOWN else "뗌"
+                print(f"버튼 {button} {state}")
 
-    # 모든 HAT의 값을 실시간으로 출력
-    # for i in range(joystick.get_numhats()):
-    #     if joystick.get_hat(i) != 0:
-    #         hat_value = joystick.get_hat(i)
-    #         print(f"HAT {i} 값: {hat_value}")
+            # HAT(방향 패드) 이벤트 처리
+            elif event.type == pygame.JOYHATMOTION:
+                hat = event.hat
+                value = event.value
+                print(f"HAT {hat} 입력값: {value}")
 
-    pygame.time.wait(100)  # 0.1초 대기
+        # CPU 사용량 줄이기 위한 딜레이
+        pygame.time.wait(10)
+
+except KeyboardInterrupt:
+    print("프로그램을 종료합니다.")
+    pygame.quit()
+    sys.exit()
