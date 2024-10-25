@@ -1,6 +1,6 @@
 from pop import Pilot
-import socket, threading, AC_horn
-import parameter_calculate as pc
+import socket, threading, project.TCP_protocal.AC_horn as AC_horn
+import project.TCP_protocal.parameter_calculate as pc
 # import avoid_blocked as ab
 
 # 차량 변수

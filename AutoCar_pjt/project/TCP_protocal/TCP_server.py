@@ -1,26 +1,24 @@
-from pop import Pilot
-import socket, threading, project.TCP_protocal.AC_horn as AC_horn
+from AutoCar import AutoCar_system as Pilot
+import socket, project.TCP_protocal.AC_horn as AC_horn
 import project.TCP_protocal.parameter_calculate as pc
-import avoid_blocked as ab
 
 # 차량 변수
 AC = Pilot.AutoCar()
-
-# 차량 LED 설정 변수
+# lidar = LiDAR.Rplidar()
 AC_led = Pilot.PWM(1,0x5c)
 AC_led.setFreq(50)
 
-# 장애물 인식 시스템 시작 변수
-start_parameter = 0
+# toggle 변수
+LED_stat = 0    # LED 토글
+lidar_stat = 0  # 라이다 토글
+lining_stat = 0 # 차선제어 토글
 
-# 멀티 쓰레딩 변수
-model_threading = threading.Thread(target=ab.avoid_model)
-
-# LED_toggle 변수
-status = 0
+# 시스템 셋업
+# lidar.connect()
+# 차선 제어 함수 셋업(추가 예정)
 
 # 서버 설정
-host = "192.168.189.205"  # 서버의 IP 주소 또는 도메인 이름
+host = "192.168.250.205"  # 서버의 IP 주소 또는 도메인 이름
 port = 20000       # 포트 번호
 
 # 서버 소켓 생성
@@ -34,10 +32,6 @@ while True:
     # 클라이언트 연결 대기
     client_socket, client_address = server_socket.accept()
     print(f"클라이언트 {client_address}가 연결되었습니다.")
-    # 장애물 회피 모델 활성화
-    if start_parameter == 0:
-        model_threading.start()
-        start_parameter = 1
 
     while True:
 
@@ -49,7 +43,7 @@ while True:
 
 
             # print(f"클라이언트 {data}.")
-            
+            print(f"현재 차량의 속도:{AC.getSpeed()}")
             # 요청 파싱
             parts = data.split("&&")
             if len(parts) != 0:
@@ -88,17 +82,9 @@ while True:
 
                     if  command == 5 and type(value) == float:
                         # RT 버튼입력 전진
-                        if ab.avoid_model() > 0.85:
-                        # 장애물 감지시 전진 잠굼
-                            print(f"장애물 변수 확인{ab.avoid_model()}")
-                            AC.stop()
-                            AC_horn.warning_horn()
-                            
-                        else:
-                            print(f"장애물 변수 확인{ab.avoid_model()}")
-                            speed = pc.cal_speed(value)
-                            AC.forward(speed)
-                        
+                        # if lidar_stat == 1 and 
+                        speed = pc.cal_speed(value)
+                        AC.forward(speed)
                         
 
                     if command == 0 and type(value) == int:
@@ -130,21 +116,17 @@ while True:
                     if command == 3 and type(value) == int:
                         # Y 버튼 입력 카메라 위치 정렬
                         AC.camPan(95)
-                        AC.camTilt(0)
-
-                # 클라이언트 이름과 메시지 출력
-                # print(f"클라이언트 명령: {command}")
-                # print(f"명령 메시지: {value}")
+                        AC.camTilt(-15)
+                    
             else:
-                pass
-
-            # client_socket.send(response.encode("utf-8"))
+                print("오류 발생: 클라이언트에서 value 입력 없음")
 
         except Exception as e:
             print(f"오류 발생: {e}")
 
         finally:
             # 클라이언트 소켓 닫기
-            print("연결종료")
+            # print("연결종료")
+            pass
 
     client_socket.close()

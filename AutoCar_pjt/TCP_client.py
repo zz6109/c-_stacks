@@ -1,7 +1,7 @@
 import socket, pygame
 
 # 서버 설정
-server_address = "192.168.189.205"  # 서버의 실제 IP 주소 또는 도메인 이름
+server_address = "192.168.250.205"  # 서버의 실제 IP 주소 또는 도메인 이름
 server_port = 20000      # 서버 포트 번호
 
 # 서버에 연결

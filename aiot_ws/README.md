@@ -44,6 +44,12 @@ add_executable(hello_pub src/hello_pub.cpp)
 
 ament_target_dependencies(<파일이름> rclcpp std_msg)
 
+서비스, 노드, 액션, 토픽 주고 받을때 이름 잘확인 할것!
+python: self.create_service(AddAndOdd, "addandodd", self.service_callback)
+c++: server_ = create_service<std_srvs::srv::SetBool>("setbool", std::bind(&Service_server::setBool_callback, this, std::placeholders::_1, std::placeholders::_2));
+
 
 
 BEST_EFFORT
+### ros2 오픈세미나 교재 링크
+### https://freshmea.notion.site/ROS2-Open-Seminar-18396a40529b4459b95d4a94f6c1998b#e8eaff82e589484bb88028dc7b4da1ea

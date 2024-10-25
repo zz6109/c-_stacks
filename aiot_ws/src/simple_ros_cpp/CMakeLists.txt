@@ -11,6 +11,10 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(turtlesim REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
+find_package(user_interface REQUIRED)
+find_package(rcl_interfaces)
+find_package(rclcpp_action REQUIRED)
 
 # include directories
 include_directories(include)
@@ -30,12 +34,32 @@ ament_target_dependencies(hello_pub_class rclcpp std_msgs)
 add_executable(move_turtle src/move_turtle.cpp)
 ament_target_dependencies(move_turtle rclcpp turtlesim geometry_msgs)
 
+add_executable(service_client src/service_client.cpp)
+ament_target_dependencies(service_client rclcpp std_srvs)
+
+add_executable(service_server src/service_server.cpp)
+ament_target_dependencies(service_server rclcpp std_srvs)
+
+add_executable(service_client_int src/service_client_int.cpp)
+ament_target_dependencies(service_client_int rclcpp user_interface)
+
+add_executable(simple_parameter src/simple_parameter.cpp)
+ament_target_dependencies(simple_parameter rclcpp rcl_interfaces)
+
+add_executable(action_server src/action_server.cpp)
+ament_target_dependencies(action_server rclcpp user_interface rclcpp_action)
+
 install(TARGETS
   hello_pub
   hello_pub_lambda
   hello_pub_class
   hello_sub
   move_turtle
+  service_client
+  service_server
+  service_client_int
+  simple_parameter
+  action_server
   DESTINATION lib/${PROJECT_NAME})
 
 # install(TARGETS hello_pub hello_pub_lambda hello_pub_class hello_sub DESTINATION lib/${PROJECT_NAME})

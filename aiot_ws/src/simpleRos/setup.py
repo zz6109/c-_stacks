@@ -12,7 +12,8 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/launch', glob(os.path.join('launch','*.launch.py')))
+        ('share/' + package_name + '/launch', glob(os.path.join('launch','*.launch.py'))),
+        ('share/' + package_name + '/param', glob(os.path.join('param', '*.yaml')))
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -31,7 +32,16 @@ setup(
             "hello_pub_qos = simpleRos.hello_pub_qos:main",
             "hello_pub_depth = simpleRos.hello_pub_depth:main",
             "time_pub = simpleRos.time_pub:main",
-            "move_turtle = simpleRos.move_turtle:main"
+            "move_turtle = simpleRos.move_turtle:main",
+            "move_turtle_time = simpleRos.move_turtle_time:main",
+            "service_server = simpleRos.service_server:main",
+            "service_client = simpleRos.service_client:main",
+            "user_int_pub = simpleRos.user_int_pub:main",
+            "service_server_int = simpleRos.service_server_int:main",
+            "action_client = simpleRos.action_client:main",
+            "action_server = simpleRos.action_server:main",
+            "simple_parameter = simpleRos.simple_parameter:main",
+            "simple_parameter2 = simpleRos.simple_parameter2:main"
             
         ],
     },
